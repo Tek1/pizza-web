@@ -16,26 +16,23 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 app.get('/', (req, res) => {
-  console.log("second load");
   res.sendFile(path.join(__dirname+'/public/index.html'));
 });
 
-// app.post('/pizza', (req, res) => {
-//   fs.appendFile('mypizzafile.txt', 'Hii there', function (err) {
-//     if (err) throw err;
-//   });
-//   res.status(200).end();
-// });
+app.put('/remove', (req, res) => {
+  pizzas[req.body.id].amount -= 1;
+  res.status(200);
+  res.send(pizzas[req.body.id]);
+})
 
 app.put('/reset', (req, res) => {
-  console.log('it logs')
   pizzas.forEach(x => {
     return x.amount = 0;
   });
   res.status(200).end();
 })
 
-app.post('/append', (req, res) => {
+app.put('/append', (req, res) => {
   pizzas[req.body.value].amount += 1; 
   res.status(200)
   res.send(pizzas[req.body.value]);
