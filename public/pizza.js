@@ -14,7 +14,8 @@ function eventList() {
       fetch('/append', myInit).then(response => {
         return response.json();
       }).then(data => {
-        console.log(data);
+          document.querySelector(`p[id="${data.id}"]`).textContent = data.amount;
+        ;
       })
     })
   })

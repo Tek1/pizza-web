@@ -32,7 +32,7 @@ app.post('/append', (req, res) => {
   // pizzas[0].amount += 1;
   // res.send(pizzas);
   res.status(200)
-  res.send(pizzas);
+  res.send(pizzas[req.body.id]);
 })
 
 app.listen(8000, () => {

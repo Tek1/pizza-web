@@ -1,3 +1,29 @@
+.description {
+display: flex;
+flex-direction: column;
+}
+.p {
+  width: 30%;
+}
+
+h1 {
+  text-align: center;
+}
+
+.butt-text {
+  display: flex;
+}
+
+.butt {
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+  margin-left: 1rem;
+}
+
+.amount {
+  margin-left: 1rem;
+}
+
 body {
   background-color: #D3D3D3;
 }
@@ -8,4 +34,12 @@ body {
 
 img {
   width: 20%;
+ height: auto;
+}
+
+.cart {
+  border: 1px solid blue;
+  margin-left: 15rem;
+  padding: 20px;
+  width: 20 rem;
 }
