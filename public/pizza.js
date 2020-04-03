@@ -52,8 +52,6 @@ function eventList() {
       })
         .then((response) => response.json())
           .then(data => {
-            console.log(data.id);
-            console.log(data.amount);
             document.querySelector(`p[id="${data.id}"]`).textContent = data.amount;
             document.querySelector(`span[id="${data.name}"]`).textContent = data.amount;
             document.querySelector('.final-number').textContent = pizzaCounter;

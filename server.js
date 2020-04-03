@@ -5,9 +5,9 @@ const fs = require('fs');
 const bodyParser = require('body-parser');
 
 let pizzas = [
-  {id: 0, name: 'pepperoni', amount: 0},
-  {id: 1, name: 'margherita', amount: 0},
-  {id: 2, name: 'bbq_chicken', amount: 0}
+  { id: 0, name: 'pepperoni', amount: 0 },
+  { id: 1, name: 'margherita', amount: 0 },
+  { id: 2, name: 'bbq_chicken', amount: 0 }
 ]
 
 
