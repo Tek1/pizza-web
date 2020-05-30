@@ -1,8 +1,64 @@
+body {
+  font-family: monospace;
+  background-color: rgb(247, 247, 247);
+}
+
+.header {
+  display: flex;
+  background-color: white;
+  justify-content: center;
+}
+.logo {
+  width: 80px;
+}
+
+
+header > p {
+  text-align: center;
+  font-size: 25px;
+}
+
+.header-buttons {
+  display: flex;
+  justify-content: center;
+}
+
+.button-delivery {
+  margin-right: 10px;
+  width: 200px;
+  height: 80px;
+  background-color: rgb(0, 137, 168);
+  color: white;
+  font-size: 20px;
+  letter-spacing: 2px;
+  cursor: pointer;
+  border-radius: 10px;
+}
+
+.button-pickup {
+  margin-left: 10px;
+  width: 200px;
+  height: 80px;
+  background-color: rgb(224, 81, 81);
+  color: white;
+  font-size: 20px;
+  letter-spacing: 2px;
+  cursor: pointer;
+  border-radius: 10px;
+}
+
+.delivery-form {
+  text-align: center;
+}
+.title {
+
+}
 .container {
   display: flex;
 }
 
 .left-half {
+  display: flex;
   width: 70%;
 }
 
@@ -10,49 +66,28 @@
   width: 30%;
 }
 
-.description {
-display: flex;
-flex-direction: column;
-margin-left: 1rem;
-}
-.p {
-  width: 30%;
+.fas {
+  margin-left: 8px;
+  cursor: pointer;
 }
 
 h1 {
   text-align: center;
 }
 
-.butt-text {
-  display: flex;
-}
-
-.butt-order {
-  margin-bottom: 0.9rem;
-  margin-top: 0.9rem;
-  margin-left: 1rem;
-}
-
-.amount {
-  margin-left: 1rem;
-}
-
-body {
-  background-color:#F0F0F0;
-}
-
 .pizza {
-  display: flex;
   margin: 1rem;
+  width: 200px;
 }
 
 img {
-  width: 30%;
+  width: 200px;
  height: auto;
- border-radius: 10%;
+ border-radius: 5px;
 }
 
 .cart {
+  margin-top: 20px;
   border: 1px solid grey;
   padding: 20px;
 }
@@ -62,13 +97,7 @@ img {
   margin-top: 0;
 }
 
-.final-pizzas {
-  display: none;
-}
 
-.final-number {
-  display: none;
-}
 
 .make-order {
   display: none;
@@ -77,12 +106,5 @@ img {
 }
 
 .order-message {
-  display: none;
-}
-
-.remove {
-  margin-left: 1rem;
-  margin-top: 0.9rem;
-  margin-bottom: 0.9rem;
   display: none;
 }

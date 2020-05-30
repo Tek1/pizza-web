@@ -4,53 +4,57 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" type="text/css" href="styles.css">
+  <script src="https://kit.fontawesome.com/482c48afe3.js" crossorigin="anonymous"></script>
 </head>
   <body>
-    <h1>Welcome to the greatest Pizzeria</h1>
+    <header>
+      <div class="header">
+        <h1 class="title">Little Amsterdam Pizzeria</h1>
+        <img src="https://i.pinimg.com/236x/d4/a1/45/d4a14501e4e22312cb2cf3e23a29b9f7--logo-free-free-vectors.jpg" class="logo">
+      </div>
+      <p>Order Online</p>
+      <div class="header-buttons">
+        <button class="button-delivery">Delivery</button>
+        <button class="button-pickup">Pick-up</button>
+      </div>
+    </header>
+    <div class="delivery-popup">
+      <form class="delivery-form">
+        <label for="postcode">POSTCODE</label><br>
+        <input type="text" name="postcode"><br>
+        <label for="housenumber">HOUSE NUMBER</label><br>
+        <input type="text" name="housenumber"><br>
+      </form>
+    </div>
+    <div class="pickup-popup">
+
+    </div>
+  
     <div class="container">
       <div class="left-half">
         <div class="pizza">
-          <img src="pepperoni.jpg">
-          <div class="description">
-            <p class="test">Pizza Pepperoni</p>
-            <div class="butt-text">
-              <button class="butt-order" type="button" value="0">Click to add!</button>
-              <p class="amount" id="0">0</p>
-              <button class="remove pepperoni" type="button" value="0">remove</button>
-            </div>
-          </div>
+          <img src="pepperoni.jpg" class="pepperoni-img">
+          <p class="test">Pizza Pepperoni</p>
+          <button class="pepperoni-button button" type="button">Click to add!</button>
         </div>
         <div class="pizza">
           <img src="margherita.jpg">
-          <div class="description">
-            <p>Pizza Margherita</p>
-            <div class="butt-text">
-              <button class="butt-order" type="button"  value="1">Click to add!</button>
-              <p class="amount" id="1">0</p>
-              <button class="remove margherita" type="button" value="1">remove</button>
-            </div>
-          </div>
+          <p class="test">Pizza Margherita</p>
+          <button class="margherita-button button" type="button">Click to add!</button>
         </div>
         <div class="pizza">
           <img src="chickenbbq.jpeg">
-          <div class="description">
-            <p>Pizza chickenBBQ</p>
-            <div class="butt-text">
-              <button class="butt-order" type="button" value="2">Click to add!</button>
-              <p class="amount" id="2">0</p>
-              <button class="remove bbq_chicken" type="button" value="2">remove</button>
-            </div>
-          </div>
+          <p>Pizza chickenBBQ</p>
+          <button class="chickenbbq-button button" type="button">Click to add!</button>
         </div>
       </div>
       <div class="right-half">
         <div class="cart">
-          <p class="summary-text">Your Total order of Pizza/s</p>
-          <div class="inner-cart">
-          </div>
-          <p class="final-pizzas">Total pizza/s =</p><span class="final-number"></span>
+          <p class="summary-text">Total order of Pizza/s</p>
+          <div class="summary-pizza"></div>
+          <div class="summary-amount">Total</div>
           <button class="make-order">Order!</button>
-          <div class="order-message"><p>Your order is successful. Prepare for a feast.</p></div>
+          <div class="order-message"><p>Your order is successful.</p></div>
         </div>
       </div>
     </div>
