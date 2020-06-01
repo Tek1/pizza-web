@@ -78,6 +78,9 @@ h1 {
 .pizza {
   margin: 1rem;
   width: 200px;
+  /* border: 1px solid black; */
+  box-shadow: 0 0 7px 0 black;
+  /* box-shadow: 1px 1px 5px 1px black, -1px 1px 5px 1px black; */
 }
 
 img {
