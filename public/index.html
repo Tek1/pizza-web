@@ -13,19 +13,19 @@
         <img src="https://i.pinimg.com/236x/d4/a1/45/d4a14501e4e22312cb2cf3e23a29b9f7--logo-free-free-vectors.jpg" class="logo">
       </div>
       <p>Order Online</p>
-      <div class="header-buttons">
-        <button class="button-delivery">Delivery</button>
-        <button class="button-pickup">Pick-up</button>
-      </div>
     </header>
-    <div class="delivery-popup">
+    <div class="order-options">
+      <button id="delivery" class="order-option">Delivery</button>
+      <button id="pickup" class="order-option">Pick-up</button>
+    </div>
+    <!-- <div class="delivery-popup">
       <form class="delivery-form">
         <label for="postcode">POSTCODE</label><br>
         <input type="text" name="postcode"><br>
         <label for="housenumber">HOUSE NUMBER</label><br>
         <input type="text" name="housenumber"><br>
       </form>
-    </div>
+    </div> -->
     <div class="pickup-popup">
 
     </div>
@@ -34,28 +34,32 @@
       <div class="left-half">
         <div class="pizza">
           <img src="pepperoni.jpg" class="pepperoni-img">
-          <p class="test">Pizza Pepperoni</p>
-          <button class="pepperoni-button button" type="button">Click to add!</button>
+          <p class="pizza-title">Pizza Pepperoni<select id="pepperoni-size"><option value="25cm">25cm</option><option value="30cm">30cm</option></select>
+          </p>
+          <p>Contains tomato sauce, cheese and pepperoni</p>
+          <button id="pepperoni" class="item-button" type="button">Click to add!</button>
         </div>
         <div class="pizza">
           <img src="margherita.jpg">
-          <p class="test">Pizza Margherita</p>
-          <button class="margherita-button button" type="button">Click to add!</button>
+          <p class="pizza-title">Pizza Margherita<select id="margherita-size"><option value="25cm">25cm</option><option value="30cm">30cm</option></select></p>
+          <p>Contains tomato sauce, mozzarella cheese and oregano</p>
+          <button id="margherita" class="item-button" type="button">Click to add!</button>
         </div>
         <div class="pizza">
           <img src="chickenbbq.jpeg">
-          <p>Pizza chickenBBQ</p>
-          <button class="chickenbbq-button button" type="button">Click to add!</button>
+          <p class="pizza-title">Pizza ChickenBBQ<select id="chickenbbq-size"><option value="25cm">25cm</option><option value="30cm">30cm</option></select></p>
+          <p>Contains tomato sauce, mozzarella cheese, grilled chicken</p>
+          <button id="chickenbbq" class="item-button" type="button">Click to add!</button>
         </div>
       </div>
-      <div class="right-half">
-        <div class="cart">
-          <p class="summary-text">Total order of Pizza/s</p>
-          <div class="summary-pizza"></div>
-          <div class="summary-amount">Total</div>
-          <button class="make-order">Order!</button>
-          <div class="order-message"><p>Your order is successful.</p></div>
-        </div>
+    </div>
+    <div class="right-half">
+      <div class="cart">
+        <p class="summary-text">Order Summary</p>
+        <div class="summary-order"></div>
+        <div class="summary-amount"></div>
+        <button class="make-order">Order!</button>
+        <div class="order-message"><p>Your order is successful.</p></div>
       </div>
     </div>
     <script type="text/javascript" src="pizza.js"></script>
