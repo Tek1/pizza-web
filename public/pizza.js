@@ -25,6 +25,19 @@ class Model {
     this.onCartChange(this.cart);
   }
 
+  subtractFromCart(item, size) {
+    if (!this.cart[item][size] || this.cart[item][size] === 0) {
+      return;
+    }
+    this.cart[item][size] -= 1;
+    this.onCartChange(this.cart);
+  }
+
+  removeItem(item, size) {
+    delete this.cart[item][size];
+    this.onCartChange(this.cart);
+  }
+
 }
 
  class View {
@@ -35,11 +48,19 @@ class Model {
   }
 
   bindOrderOptions(handler) {
-    this.handleOrderType = handler
+    this.handleOrderType = handler;
   }
 
   bindHandleAddToCart(handler) {
-    this.handleAddToCart = handler
+    this.handleAddToCart = handler;
+  }
+
+  bindHandleSubtractFromCart(handler) {
+    this.handleSubtractFromCart = handler;
+  }
+
+  bindHandleRemoveItem(handler) {
+    this.handleRemoveItem = handler;
   }
 
   displayCartItems(cart) {
@@ -49,21 +70,34 @@ class Model {
 
     for (const item of Object.keys(cart)) {
       for (const size of Object.keys(cart[item])) {
-        const itemLine = document.createElement('p');
-        const itemCount = document.createElement('span');
-        const itemNameAndSize = document.createElement('span');
-        const addItem = document.createElement('i');
-        const subtractItem = document.createElement('i');
-        addItem.classList.add('fas');
-        addItem.classList.add('fa-plus-circle');
-        subtractItem.classList.add('fas');
-        subtractItem.classList.add('fa-minus-circle') 
+        const itemLine = this.createElement('p');
+        const itemCount = this.createElement('span');
+        const itemNameAndSize = this.createElement('span');
+        const addItem = this.createElement('i', 'fas', 'fa-plus-circle');
+        addItem.addEventListener('click', () => {
+          this.handleAddToCart(item, size);
+        })
+        const subtractItem = this.createElement('i', 'fas', 'fa-minus-circle');
+        subtractItem.addEventListener('click', () => {
+          this.handleSubtractFromCart(item, size);
+        })
+        const removeItem = this.createElement('i', 'fas', 'fa-times-circle');
+        removeItem.addEventListener('click', () => {
+          this.handleRemoveItem(item, size);
+        })
         itemCount.textContent = ` ${cart[item][size]}`;
-        itemNameAndSize.textContent = ` ${size} ${item}`;
-        itemLine.append(addItem, itemCount, subtractItem, itemNameAndSize);
+        itemNameAndSize.textContent = ` ${size} ${item} `;
+        itemLine.append(addItem, itemCount, subtractItem, itemNameAndSize, removeItem);
         this.summaryOrder.append(itemLine);
       }
     }
+  }
+
+  createElement(tag, firstClassName, secondClassName) {
+   const element = document.createElement(tag);
+   element.classList.add(firstClassName);
+   element.classList.add(secondClassName);
+   return element;
   }
 
   initListeners() {
@@ -99,7 +133,10 @@ class Controller {
     //  explicit this binding.
     this.view.bindOrderOptions(this.handleOrderType)
     this.view.bindHandleAddToCart(this.handleAddToCart)
+    this.view.bindHandleSubtractFromCart(this.handleSubtractFromCart);
+    this.view.bindHandleRemoveItem(this.handleRemoveItem);
     this.model.bindHandleOnCartChange(this.handleOnCartChange)
+    
     
     // display initial cart items
     this.view.displayCartItems(this.model.cart)
@@ -116,6 +153,14 @@ class Controller {
 
   handleAddToCart = (item, size) => {
     this.model.addToCart(item, size);
+  }
+
+  handleSubtractFromCart = (item, size) => {
+    this.model.subtractFromCart(item, size);
+  }
+
+  handleRemoveItem = (item, size) => {
+    this.model.removeItem(item, size);
   }
 }
 
