@@ -11,25 +11,31 @@ class Model {
     this.orderType = orderType;
   }
 
-  addToCart(item, size) {
+  addToCart(item, size, quantityPrice) {
     if (this.cart[item]) {
       if (this.cart[item][size]) {
-        this.cart[item][size] += 1;
+        this.cart[item][size]['quantity'] += 1;
       } else {
-        this.cart[item][size] = 1;
+        this.cart[item][size]['quantityPrice'] = quantityPrice;
+        this.cart[item][size]['quantity'] = 1;
       }
     } else {
       this.cart[item] = {};
-      this.cart[item][size] = 1;
+      this.cart[item][size] = {};
+      this.cart[item][size]['quantityPrice'] = quantityPrice;
+      this.cart[item][size]['quantity'] = 1;
     }
     this.onCartChange(this.cart);
   }
 
   subtractFromCart(item, size) {
-    if (!this.cart[item][size] || this.cart[item][size] === 0) {
-      return;
+    this.cart[item][size]['quantity'] -= 1;
+    if (this.cart[item][size]['quantity'] === 0) {
+      delete this.cart[item][size];
     }
-    this.cart[item][size] -= 1;
+    if (Object.keys(this.cart[item]).length === 0) {
+      delete this.cart[item];
+    }
     this.onCartChange(this.cart);
   }
 
@@ -85,7 +91,7 @@ class Model {
         removeItem.addEventListener('click', () => {
           this.handleRemoveItem(item, size);
         })
-        itemCount.textContent = ` ${cart[item][size]}`;
+        itemCount.textContent = ` ${cart[item][size]['quantity']}`;
         itemNameAndSize.textContent = ` ${size} ${item} `;
         itemLine.append(addItem, itemCount, subtractItem, itemNameAndSize, removeItem);
         this.summaryOrder.append(itemLine);
@@ -114,8 +120,10 @@ class Model {
     document.querySelectorAll('.item-button').forEach(button => {
       button.addEventListener('click', event => {
         const id = event.target.id;
-        const size = document.getElementById(`${id}-size`).value;
-        this.handleAddToCart(id, size);
+        const selectValue = JSON.parse(document.getElementById(`${id}-size`).value)
+        const size = selectValue['size'];
+        const quantityPrice = selectValue['quantityPrice'];
+        this.handleAddToCart(id, size, quantityPrice);
       });
     });
   }
@@ -151,8 +159,8 @@ class Controller {
     this.model.saveOrderType(orderType)
   }
 
-  handleAddToCart = (item, size) => {
-    this.model.addToCart(item, size);
+  handleAddToCart = (item, size, quantityPrice) => {
+    this.model.addToCart(item, size, quantityPrice);
   }
 
   handleSubtractFromCart = (item, size) => {

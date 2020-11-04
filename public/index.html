@@ -14,10 +14,7 @@
       </div>
       <p>Order Online</p>
     </header>
-    <div class="order-options">
-      <button id="delivery" class="order-option">Delivery</button>
-      <button id="pickup" class="order-option">Pick-up</button>
-    </div>
+    
     <!-- <div class="delivery-popup">
       <form class="delivery-form">
         <label for="postcode">POSTCODE</label><br>
@@ -29,25 +26,28 @@
     <div class="pickup-popup">
 
     </div>
-  
     <div class="container">
+      <div class="order-options">
+        <button id="delivery" class="order-option">Delivery</button>
+        <button id="pickup" class="order-option">Pick-up</button>
+      </div>
       <div class="left-half">
         <div class="pizza">
           <img src="pepperoni.jpg" class="pepperoni-img">
-          <p class="pizza-title">Pizza Pepperoni<select id="pepperoni-size"><option value="25cm">25cm</option><option value="30cm">30cm</option></select>
+          <p class="pizza-title">Pizza Pepperoni<br><select id="pepperoni-size"><option value='{"size": "25cm", "quantityPrice": 10}'>25cm €10</option><option value='{"size": "30cm", "quantityPrice": 12}'>30cm €12</option></select>
           </p>
           <p>Contains tomato sauce, cheese and pepperoni</p>
           <button id="pepperoni" class="item-button" type="button">Click to add!</button>
         </div>
         <div class="pizza">
           <img src="margherita.jpg">
-          <p class="pizza-title">Pizza Margherita<select id="margherita-size"><option value="25cm">25cm</option><option value="30cm">30cm</option></select></p>
+          <p class="pizza-title">Pizza Margherita<br><select id="margherita-size"><option value='{"size": "25cm", "quantityPrice": 10}'>25cm €10</option><option value='{"size": "30cm", "quantityPrice": 12}'>30cm €12</option></select></p>
           <p>Contains tomato sauce, mozzarella cheese and oregano</p>
           <button id="margherita" class="item-button" type="button">Click to add!</button>
         </div>
         <div class="pizza">
           <img src="chickenbbq.jpeg">
-          <p class="pizza-title">Pizza ChickenBBQ<select id="chickenbbq-size"><option value="25cm">25cm</option><option value="30cm">30cm</option></select></p>
+          <p class="pizza-title">Pizza ChickenBBQ <br><select id="chickenbbq-size"><option value='{"size": "25cm", "quantityPrice": 10}'>25cm €10</option><option value='{"size": "30cm", "quantityPrice": 12}'>30cm €12</option></select></p>
           <p>Contains tomato sauce, mozzarella cheese, grilled chicken</p>
           <button id="chickenbbq" class="item-button" type="button">Click to add!</button>
         </div>

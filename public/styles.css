@@ -1,3 +1,4 @@
+
 body {
   font-family: monospace;
   background-color: rgb(238, 238, 238);
@@ -19,8 +20,8 @@ header > p {
 }
 
 .order-options {
-  position: fixed;
-  top: 170px;
+  position: absolute;
+  top: 0;
   right: 0;
   left: 0;
   bottom: 0;
@@ -60,6 +61,7 @@ button[id="pickup"] {
 }
 
 .container {
+  position: relative;
   display: flex;
 }
 
@@ -103,15 +105,15 @@ h1 {
 }
 
 #pepperoni-size {
-  margin-left: 8px;
+  width: 100%;
 }
 
 #margherita-size {
-  margin-left: 8px;
+  width: 100%;
 }
 
 #chickenbbq-size {
-  margin-left: 8px;
+  width: 100%;
 }
 
 .item-button {
