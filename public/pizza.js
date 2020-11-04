@@ -41,6 +41,10 @@ class Model {
 
   removeItem(item, size) {
     delete this.cart[item][size];
+    if (Object.keys(this.cart[item]).length === 0) {
+      delete this.cart[item];
+    }
+
     this.onCartChange(this.cart);
   }
 
@@ -74,10 +78,15 @@ class Model {
       this.summaryOrder.removeChild(this.summaryOrder.firstChild);
     }
 
+    while(this.summaryAmount.firstChild) {
+      this.summaryAmount.removeChild(this.summaryAmount.firstChild);
+    }
+
     for (const item of Object.keys(cart)) {
       for (const size of Object.keys(cart[item])) {
         const itemLine = this.createElement('p');
         const itemCount = this.createElement('span');
+        const price = this.createElement('span', 'item-price');
         const itemNameAndSize = this.createElement('span');
         const addItem = this.createElement('i', 'fas', 'fa-plus-circle');
         addItem.addEventListener('click', () => {
@@ -93,16 +102,38 @@ class Model {
         })
         itemCount.textContent = ` ${cart[item][size]['quantity']}`;
         itemNameAndSize.textContent = ` ${size} ${item} `;
-        itemLine.append(addItem, itemCount, subtractItem, itemNameAndSize, removeItem);
+        const hr = this.createElement('hr');
+        price.textContent = `€${cart[item][size]['quantity'] * cart[item][size]['quantityPrice']}`
+        itemLine.append(addItem, itemCount, subtractItem, itemNameAndSize, price, removeItem, hr);
         this.summaryOrder.append(itemLine);
       }
     }
+
+    if (Object.keys(cart).length) {
+      const totalTextSpan = this.createElement('span');
+      const totalAmountSpan = this.createElement('span');
+      let totalAmount = 0;
+      for (const item of Object.keys(cart)) {
+        for (const size of Object.keys(cart[item])) {
+          totalAmount += (cart[item][size]['quantity'] * cart[item][size]['quantityPrice']);
+        }
+      }
+      totalTextSpan.textContent = 'Total';
+      totalAmountSpan.textContent = `€${totalAmount}`;
+      this.summaryAmount.append(totalTextSpan, totalAmountSpan);
+    }
+    
   }
 
   createElement(tag, firstClassName, secondClassName) {
    const element = document.createElement(tag);
-   element.classList.add(firstClassName);
-   element.classList.add(secondClassName);
+   if (firstClassName) {
+    element.classList.add(firstClassName);
+   }
+   if (secondClassName) {
+    element.classList.add(secondClassName);
+   }
+   
    return element;
   }
 

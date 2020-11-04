@@ -149,15 +149,25 @@ img {
   display: none;
   margin-top: 20px;
   box-shadow: 0 0 7px 0 black;
-  padding: 20px;
+  padding: 10px;
   background-color:  rgb(253, 253, 253);
 }
 
 .summary-text {
   text-align: center;  
   margin-top: 0;
-  font-size: 15px;
+  font-size: 18px;
   font-weight: 700;
+}
+
+.summary-amount {
+  display: flex;
+  justify-content: space-between;
+}
+
+.summary-amount > span {
+  font-size: 18px;
+  font-weight: 800;
 }
 
 
